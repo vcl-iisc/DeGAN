@@ -115,6 +115,7 @@ if __name__ == '__main__':
             loss_ce_sum = 0
             loss_all_sum = 0
             teacher_student_correct_sum = 0
+            netS.train()
             for i in range(n_batches):
                 optimizerS.zero_grad()
                 noise_rand = torch.randn(batch_size, nz, 1, 1, device=device)
@@ -147,6 +148,7 @@ if __name__ == '__main__':
             loss_ce_val_sum = 0
             loss_all_val_sum = 0
             teacher_student_correct_val_sum = 0
+            netS.eval()
             with torch.no_grad():
                 for i in range(int(np.floor(n_batches/4))):
                     noise_rand = torch.randn(batch_size, nz, 1, 1, device=device)
